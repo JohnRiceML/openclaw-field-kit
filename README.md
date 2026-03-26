@@ -1,164 +1,165 @@
 # OpenClaw Field Kit
 
-**Drop-in skills that help non-technical people set up, run, and fix [OpenClaw](https://openclaw.ai) — without needing to read the docs themselves.**
+**You don't need to be technical to run AI agents.** This kit gives you interactive guides that walk you through everything — step by step, in plain English, and they always ask before changing anything.
 
-Born from real problems we kept hitting while helping organizations get their agents running. Every skill in this kit was built because someone got stuck and we turned the fix into a reusable guide.
-
----
-
-## What's the idea?
-
-OpenClaw is powerful, but the docs are written for engineers. If you're a founder, operator, or team lead trying to get AI agents working for your organization, you shouldn't need to understand context windows or cron syntax to get value out of it.
-
-These skills act as **interactive assistants** — you type a slash command, and an AI guide walks you through the process step by step, in plain language, asking before it changes anything.
+> *"Think of these as having a friendly expert sitting next to you while you set things up."*
 
 ---
 
-## What's in the kit
+## What problem does this solve?
 
-| Skill | Command | What it does |
-|-------|---------|-------------|
-| [Setup Guide](skills/setup-guide/) | `/setup-guide` | Walks you through installing OpenClaw from scratch |
-| [Context Doctor](skills/context-doctor/) | `/context-doctor` | Diagnoses why you're burning through tokens and fixes it |
-| [Troubleshooter](skills/troubleshooter/) | `/troubleshooter` | When something breaks, reads the docs for you and walks you through the fix |
-| [Cron Builder](skills/cron-builder/) | `/cron-builder` | Sets up automated jobs with focused agents and self-healing monitoring |
+[OpenClaw](https://openclaw.ai) lets you run AI agents on your own computer. It's powerful — but the documentation assumes you're a software engineer.
 
-### Setup Guide
-
-Your starting point. Opens in Claude Desktop or Claude Code and walks you through the full OpenClaw installation — checking your system, running the installer, verifying the gateway, and sending your first message. Explains every step before running it.
-
-### Context Doctor
-
-For when you hit your session limit or things feel slow. Runs diagnostics on your context window, shows you exactly what's eating your tokens, and walks you through the fixes — compaction, caching, trimming system prompts, model routing. Explains every tradeoff so you can decide what makes sense.
-
-### Troubleshooter
-
-The "it's broken and I don't know why" skill. You describe the problem in your own words, it reads the relevant OpenClaw documentation, figures out what's wrong, and walks you through the fix. If it can't solve it, it summarizes what it tried so you can get help from the community.
-
-### Cron Builder
-
-For automating recurring work — daily summaries, inbox monitoring, weekly reports. Built around three principles:
-
-1. **Vertical agents** — one small, focused agent per job instead of one mega-agent that does everything. When something breaks, you know exactly which piece broke.
-2. **Test before you ship** — every job gets tested manually before it goes live. No exceptions.
-3. **Self-healing monitoring** — builds a watchdog agent that checks your other agents, re-runs failed jobs, and alerts you when something needs attention.
+If you're a **founder, operator, team lead, or anyone who isn't an engineer**, this kit bridges that gap. Instead of reading docs, you type a simple command and an AI guide walks you through it like a conversation.
 
 ---
 
-## How to use these
+## What's inside
 
-### Option 1: You already have OpenClaw running
+### `/setup-guide` — Get OpenClaw running on your computer
 
-**Install a single skill:**
+For your first day. Checks your computer, installs everything, and walks you through sending your first message. You don't need to know what a "gateway" or "terminal" is — it explains as it goes.
 
-```bash
-# Clone the repo
-git clone https://github.com/JohnRiceML/openclaw-field-kit.git
+**Use this when:** You just heard about OpenClaw and want to try it.
 
-# Copy the skill you want into your OpenClaw skills folder
-cp -r openclaw-field-kit/skills/context-doctor ~/.openclaw/skills/context-doctor
+---
+
+### `/context-doctor` — Fix slow or expensive agents
+
+Your agents have a "memory budget" for each conversation. When it fills up, things get slow or stop working. This guide checks what's using up that budget and helps you free up space.
+
+**Use this when:**
+- You hit a message that says you're out of tokens or at your session limit
+- Your agents feel slow or expensive
+- You upgraded to a more powerful model and burned through your limit faster than expected
+
+---
+
+### `/troubleshooter` — Fix anything that breaks
+
+Describe your problem in your own words. This guide goes and reads the official OpenClaw documentation *for you*, figures out what's wrong, and walks you through the fix. No Googling required.
+
+**Use this when:**
+- You see an error message you don't understand
+- Something that was working yesterday stopped working today
+- You're stuck and don't know what to do next
+
+---
+
+### `/cron-builder` — Automate tasks that you keep doing manually
+
+Sets up scheduled jobs — like a daily summary, inbox check, or weekly report — that run automatically. Built around a simple idea: **small, focused agents that each do one thing well**, with a watchdog agent that makes sure everything keeps running.
+
+**Use this when:**
+- You keep doing the same thing every day and wish it just happened on its own
+- You want daily briefings, automated reports, or regular monitoring
+- You tried to automate something and it broke — this rebuilds it the right way
+
+---
+
+## Getting started
+
+### "I don't have OpenClaw yet."
+
+You'll need [Claude Desktop](https://claude.ai) (the app) or [Claude Code](https://claude.ai) (the terminal version) — you probably already have one of these.
+
+1. Open Claude
+2. Click on the [Setup Guide skill file](skills/setup-guide/SKILL.md) in this repo
+3. Copy everything in the file
+4. Paste it into your Claude chat
+5. Type: **"Help me install OpenClaw"**
+
+That's it. Claude takes it from there — checks your system, installs OpenClaw, and gets you up and running.
+
+### "I already have OpenClaw running."
+
+**Easiest way — install everything at once:**
+
+Ask your agent (or Claude) to run these two commands for you:
+
+```
+git clone https://github.com/JohnRiceML/openclaw-field-kit.git ~/openclaw-field-kit
+cp -r ~/openclaw-field-kit/skills/* ~/.openclaw/skills/
 ```
 
-**Install all skills at once:**
+Or just tell your agent:
 
-```bash
-git clone https://github.com/JohnRiceML/openclaw-field-kit.git
-cp -r openclaw-field-kit/skills/* ~/.openclaw/skills/
+> *"Go to github.com/JohnRiceML/openclaw-field-kit, download the skills, and install them into my OpenClaw skills folder."*
+
+It'll figure it out.
+
+**Then use any skill by typing its command:**
+
 ```
-
-Then type the slash command in any agent chat:
-
-```
+/setup-guide
 /context-doctor
 /troubleshooter
 /cron-builder
 ```
 
-The skill loads and the agent switches into guide mode, walking you through everything interactively.
+Your agent switches into guide mode and walks you through everything.
 
-### Option 2: You don't have OpenClaw yet
+### "I just need help with one thing right now."
 
-No problem — that's what the setup guide is for.
+You don't need to install anything.
 
-1. Open **Claude Desktop** (the app) or **Claude Code** (the terminal tool)
-2. Go to the [setup-guide SKILL.md](skills/setup-guide/SKILL.md) file in this repo
-3. Copy its contents and paste it into the chat
-4. Say: **"Follow these instructions to help me install OpenClaw on my computer."**
+1. Click on the skill file you need (links above)
+2. Copy the contents
+3. Paste it into any Claude or OpenClaw chat
+4. Describe your problem
 
-Claude will check your system, install OpenClaw, and walk you through the whole process. Once OpenClaw is running, you can install the rest of the skills normally.
-
-### Option 3: You just need help with one thing right now
-
-You don't need to install anything. Open Claude Desktop or Claude Code, copy the contents of whichever skill file you need, paste it into the chat, and describe your problem. The skill instructions tell Claude how to help you.
+The instructions tell the AI exactly how to help you.
 
 ---
 
-## How these skills work
+## How it works (the short version)
 
-Each skill is a single Markdown file (`SKILL.md`) that gives the AI a specific role and a structured walkthrough process. When you run the slash command, OpenClaw loads the instructions and the agent becomes that specialist.
+Each skill is a file that tells the AI: *"Here's who you are right now, here's the process to follow, and here are the rules — go slow, explain everything, and don't touch anything without asking."*
 
-Every skill follows the same principles:
+When you run the command, your agent reads that file and becomes that specialist. It's like calling in an expert for a specific job.
 
-- **No jargon without an explanation.** Technical terms get a plain-English analogy first.
-- **Never changes anything without asking.** You're always in control.
-- **Explains tradeoffs honestly.** Every optimization has a cost — the skill tells you what it is so you can decide.
-- **One step at a time.** Checks that you understand before moving on.
+**Every skill in this kit follows these rules:**
 
----
-
-## Common scenarios
-
-**"I just got access to OpenClaw and have no idea where to start."**
-> Use `/setup-guide`. It handles everything from installation to your first message.
-
-**"My agent hit its token limit halfway through the morning."**
-> Use `/context-doctor`. It'll show you what's eating your tokens and help you fix it — usually prompt caching and compaction get you back on track fast.
-
-**"I got an error and I don't understand what it means."**
-> Use `/troubleshooter`. Describe what happened in your own words. It reads the OpenClaw docs, figures out the fix, and walks you through it.
-
-**"I keep doing the same thing manually every day and want to automate it."**
-> Use `/cron-builder`. It'll help you set up a focused agent, test it, schedule it, and build monitoring so you know if it ever breaks.
-
-**"I set up a bunch of agents and now everything is slow and expensive."**
-> Start with `/context-doctor` to trim the fat, then `/cron-builder` if you want to restructure your agents into smaller, focused pieces.
+- Explains things in everyday language — no jargon without an analogy first
+- Never makes changes without your permission
+- Goes one step at a time and checks that you're following
+- Tells you the tradeoffs honestly so you can make the call
+- If it doesn't know something, it says so instead of guessing
 
 ---
 
-## Contributing
+## Quick answers
 
-We add new skills when we hit a problem enough times that it deserves a reusable fix. If you're helping people set up OpenClaw and keep running into the same issue, turn it into a skill.
+**"What if I mess something up?"**
+> These skills are designed to be safe. They always ask before changing anything, and most changes are reversible. If something does go wrong, use `/troubleshooter` to fix it.
 
-### How to add a skill
+**"Do I need to be technical to use these?"**
+> No. That's the whole point. If you can have a conversation, you can use these.
 
-1. Create a folder under `skills/` with a descriptive name (e.g., `skills/my-new-skill/`)
-2. Add a `SKILL.md` file with [OpenClaw skill frontmatter](https://docs.openclaw.ai/skills):
+**"Do I need to install all of them?"**
+> No. Grab whichever ones you need. They work independently.
 
-```markdown
+**"Can I use these with Claude Desktop instead of OpenClaw?"**
+> Yes! Just copy the contents of any skill file, paste it into Claude Desktop, and describe what you need help with. The slash commands only work inside OpenClaw, but the skill instructions work anywhere Claude runs.
+
+**"My agent maxed out its session this morning. Which skill do I need?"**
+> `/context-doctor`. It'll figure out what's eating your budget and help you fix it. Usually takes a few minutes.
+
+**"I want to automate something but I'm nervous about things running on autopilot."**
+> `/cron-builder` tests everything manually before scheduling it. Nothing runs on autopilot until you've seen it work and said "yes, turn it on." It also builds a watchdog that alerts you if anything breaks.
+
 ---
-name: my-new-skill
-description: One line explaining what it does.
-user-invocable: true
----
 
-# Skill Name
+## Built by people who keep helping people set up OpenClaw
 
-Instructions for the AI go here...
-```
+Every skill in this kit exists because someone got stuck and we turned the solution into a reusable guide. If you're helping others get set up and keep running into the same problem, we'd love your contribution.
 
-3. Open a PR with a short description of the problem this skill solves
+**To add a new skill:** Create a folder in `skills/`, add a `SKILL.md` file following the [OpenClaw skill format](https://docs.openclaw.ai/skills), and open a pull request. The only rule: **write it for someone who is not an engineer.**
 
-### Guidelines for writing skills
-
-- **Write for someone who is not an engineer.** If your mom or your sales lead couldn't follow it, simplify it.
-- **Always ask before changing anything.** Guide, don't auto-pilot.
-- **Explain tradeoffs.** Don't just say "do this" — say "this saves tokens but you might lose some detail from older messages."
-- **Include a test step.** If the skill sets something up, it should verify that it worked before moving on.
-- **Keep SKILL.md focused.** One skill, one problem. If it's doing too many things, split it up.
-- **Link to the official docs.** Skills should reference [docs.openclaw.ai](https://docs.openclaw.ai) so the AI can fetch current information rather than relying on stale instructions.
+See the [contributing guide](CONTRIBUTING.md) for details.
 
 ---
 
 ## License
 
-MIT
+MIT — use it however you want.
