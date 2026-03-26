@@ -4,6 +4,8 @@
 
 > *"Think of these as having a friendly expert sitting next to you while you set things up."*
 
+**Hit your token limit?** Go straight to **[START-HERE.md](START-HERE.md)** — it tells you exactly what to open, what to type, and where to type it.
+
 ---
 
 ## What problem does this solve?
